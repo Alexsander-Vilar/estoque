@@ -54,14 +54,9 @@ public class ProdutoService {
         return produtoRepository.existsProdutoByNome(nome);
     }
 
-    public boolean existeProdutoPorId(String classificacao) {
-        return produtoRepository.existsProdutoByClassificacao(classificacao);
-    }
-
     public boolean existeProdutoPorFabricante(String fabricante) {
         return produtoRepository.existsProdutoByFabricante(fabricante);
     }
-
     public boolean existeProdutoPorClassificacao(String classificacao) {
         return produtoRepository.existsProdutoByClassificacao(classificacao);
     }

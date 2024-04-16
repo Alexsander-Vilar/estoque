@@ -1,30 +1,25 @@
-package estudo.alexsander.estoque.model;
+package estudo.alexsander.estoque.dto;
 
-import jakarta.persistence.*;
+import estudo.alexsander.estoque.model.Produto;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-import java.math.BigDecimal;
-
-
-@Entity
-@Table(name = "Estoque_Produtos")
-public class Estoque {
-    @Id
-    @Column(nullable = false)
+public class EstoqueDto {
+    @NotNull
     private long id;
-    @ManyToOne
-    @JoinColumn(name = "produto_id")
+    @NotBlank
     private Produto produto;
-    @Column(nullable = false)
-    private int quantidade;
-    @Column(nullable = false)
-    private BigDecimal preco;
+    @NotBlank
+    private int quantidade = 0;
+    @NotBlank
+    private double preco;
 
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
-        this.id = produto.getId();
+        this.id = id;
     }
 
     public Produto getProduto() {
@@ -43,11 +38,11 @@ public class Estoque {
         this.quantidade = quantidade;
     }
 
-    public BigDecimal getPreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 }
