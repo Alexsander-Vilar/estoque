@@ -49,15 +49,19 @@ public class ProdutoService {
     public boolean existeProdutoPorId(long id) {
         return produtoRepository.existsById(id);
     }
+
     public boolean existeProdutoPorNome(String nome) {
         return produtoRepository.existsProdutoByNome(nome);
     }
+
     public boolean existeProdutoPorId(String classificacao) {
         return produtoRepository.existsProdutoByClassificacao(classificacao);
     }
+
     public boolean existeProdutoPorFabricante(String fabricante) {
         return produtoRepository.existsProdutoByFabricante(fabricante);
     }
+
     public boolean existeProdutoPorClassificacao(String classificacao) {
         return produtoRepository.existsProdutoByClassificacao(classificacao);
     }

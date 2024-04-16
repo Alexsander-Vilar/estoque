@@ -7,13 +7,11 @@ import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,12 +56,28 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.OK).body(produtoOptional.get());
     }
 
-    @GetMapping(path = "/find")
+    @GetMapping(path = "/nome/find")
     public ResponseEntity<List<Produto>> findByName(@RequestParam String name) {
         if (!produtoService.existeProdutoPorNome(name)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return ResponseEntity.ok(produtoService.findByNome(name));
+    }
+
+    @GetMapping(path = "/fabricante/find")
+    public ResponseEntity<List<Produto>> findByFabricante(@RequestParam String fabricante) {
+        if (!produtoService.existeProdutoPorFabricante(fabricante)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(produtoService.findByFabricante(fabricante));
+    }
+
+    @GetMapping(path = "/classificacao/find")
+    public ResponseEntity<List<Produto>> findByClassificacao(@RequestParam String classificacao) {
+        if (!produtoService.existeProdutoPorClassificacao(classificacao)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(produtoService.findByClassificacao(classificacao));
     }
 
 
