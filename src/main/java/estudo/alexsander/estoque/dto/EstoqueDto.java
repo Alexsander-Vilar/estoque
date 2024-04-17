@@ -4,15 +4,17 @@ import estudo.alexsander.estoque.model.Produto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
+
 public class EstoqueDto {
     @NotNull
     private long id;
     @NotBlank
     private Produto produto;
     @NotBlank
-    private int quantidade = 0;
+    private int quantidade;
     @NotBlank
-    private double preco;
+    private BigDecimal preco;
 
     public long getId() {
         return id;
@@ -38,11 +40,11 @@ public class EstoqueDto {
         this.quantidade = quantidade;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 }
